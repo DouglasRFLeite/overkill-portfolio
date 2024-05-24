@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="pt">
       <AppProvider>
-        <body className={`${inter.className} dark`}>{children}</body>
+        <body className={`${inter.className}`}>{children}</body>
       </AppProvider>
     </html>
   );

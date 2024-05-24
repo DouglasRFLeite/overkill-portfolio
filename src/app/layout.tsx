@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Provider } from "react-redux";
 import store from "@/redux/store";
+import AppProvider from "@/redux/AppProvider";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,9 +19,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt">
-      <Provider store={store}>
-        <body className={inter.className}>{children}</body>
-      </Provider>
+      <AppProvider>
+        <body className={`${inter.className} dark`}>{children}</body>
+      </AppProvider>
     </html>
   );
 }

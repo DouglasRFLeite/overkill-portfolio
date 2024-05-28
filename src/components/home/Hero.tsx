@@ -1,9 +1,13 @@
-import { Spotlight } from "../aceternity/Spotlight";
-import { Button } from "@/components/ui/shadcn/button";
-import { Github } from "lucide-react";
+import { Spotlight } from "../ui/aceternity/Spotlight";
 import HeroSocials from "./HeroSocials";
 
-export default function Hero() {
+export default function Hero({ title }: { title: string }) {
+
+  function decodeParameter(title : string) {
+    return decodeURIComponent(title.replace(/\+/g, ' '));
+ }
+
+
   return (
     <section className="flex flex-col items-center justify-center h-screen text-left max-w-[80%] w-[1000px] mx-auto">
       <Spotlight />
@@ -14,9 +18,9 @@ export default function Hero() {
         <HeroSocials />
       </div>
       <h1 className="text-[8rem] leading-none font-semibold text-gray-500 w-[100%] mb-8">
-        ENGENHEIRO DE SOFTWARE
+        {decodeParameter(title).toUpperCase()}
       </h1>
-      <Button>Contato</Button>
+      
     </section>
   );
 }

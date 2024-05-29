@@ -146,7 +146,7 @@ const tecnologias = [
   },
 ];
 
-export default function AboutMe() {
+export default function Tecnologias() {
   const [techList, setTechList] = useState(tecnologias.slice(0, 3));
   const [allVisible, setAllVisible] = useState(false);
 

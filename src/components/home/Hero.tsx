@@ -1,12 +1,24 @@
+"use client";
+
+import { useSelector } from "react-redux";
 import { Spotlight } from "../ui/aceternity/Spotlight";
 import HeroSocials from "./HeroSocials";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { RootState } from "@/redux/store";
+import { useEffect } from "react";
+import { setJob } from "@/redux/slices/jobSlice";
 
 export default function Hero({ title }: { title: string }) {
+  const job = useAppSelector((state: RootState) => state.job.value);
+  const dispatch = useAppDispatch();
 
-  function decodeParameter(title : string) {
-    return decodeURIComponent(title.replace(/\+/g, ' '));
- }
+  useEffect(() => {
+    dispatch(setJob(title));
+  }, [title, dispatch]);
 
+  function decodeParameter(title: string) {
+    return decodeURIComponent(title.replace(/\+/g, " "));
+  }
 
   return (
     <section className="flex flex-col items-center justify-center h-screen text-left max-w-[80%] w-[1000px] mx-auto">
@@ -18,9 +30,8 @@ export default function Hero({ title }: { title: string }) {
         <HeroSocials />
       </div>
       <h1 className="text-[8rem] leading-none font-semibold text-gray-500 w-[100%] mb-8">
-        {decodeParameter(title).toUpperCase()}
+        {decodeParameter(job).toUpperCase()}
       </h1>
-      
     </section>
   );
 }
